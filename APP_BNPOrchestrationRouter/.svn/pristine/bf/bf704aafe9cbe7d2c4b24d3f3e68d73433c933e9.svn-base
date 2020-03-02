@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:decisionService xmlns:ns2="com.ibm.wmb.rulesmodel">
+    <type>ODM_EMBEDDED</type>
+    <name>BNPOrchestrationRouter_Decision_Service</name>
+    <version>1.0</version>
+    <lastModified>Tue Sep 02 18:59:32 CST 2014</lastModified>
+    <description></description>
+    <RuleSets>
+        <RuleSet>
+            <name>BNPOrchestrationRouter_Decision_Service</name>
+            <package></package>
+            <Parameters>
+                <Parameter>
+                    <name>UDTO</name>
+                    <kind>INOUT</kind>
+                    <type xmlns:ns3="http://smart.com.ph/udto/">ns3:UDTOType</type>
+                    <locale>en</locale>
+                    <verbalization>UDTO</verbalization>
+                </Parameter>
+            </Parameters>
+            <Rules>
+                <Rule>
+                    <name>Rule 1</name>
+                    <sequenceNumber>0</sequenceNumber>
+                    <locale>en</locale>
+                    <definition>if the OVParam1s of the other variables of the message variables of UDTO contain &quot;Inquiry&quot;
+
+then set the atomic service Q of the message variables of UDTO to &quot;BPGW.INQUIRE.ORCHESTRATION.UDTO.IN&quot;;
+	 </definition>
+                </Rule>
+                <Rule>
+                    <name>Rule 2</name>
+                    <sequenceNumber>1</sequenceNumber>
+                    <locale>en</locale>
+                    <definition>if the OVParam1s of the other variables of the message variables of UDTO contain &quot;Charge&quot;&#xD;
+&#xD;
+then set the atomic service Q of the message variables of UDTO to &quot;BPGW.CHARGE.ORCHESTRATION.UDTO.IN&quot;;</definition>
+                </Rule>
+                <Rule>
+                    <name>Rule 3</name>
+                    <sequenceNumber>2</sequenceNumber>
+                    <locale>en</locale>
+                    <definition>if the OVParam1s of the other variables of the message variables of UDTO contain &quot;Refund&quot;&#xD;
+&#xD;
+then set the atomic service Q of the message variables of UDTO to &quot;BPGW.REFUND.ORCHESTRATION.UDTO.IN&quot;;</definition>
+                </Rule>
+            </Rules>
+        </RuleSet>
+    </RuleSets>
+</ns2:decisionService>

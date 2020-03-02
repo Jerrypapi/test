@@ -1,0 +1,49 @@
+BROKER SCHEMA com.smart.bnp.router.esql
+
+PATH com.smart.bpgw.common.esql;
+DECLARE UDP_INQUIRY_ENDPOINT EXTERNAL CHARACTER '';
+DECLARE UDP_CHARGE_ENDPOINT EXTERNAL CHARACTER '';
+DECLARE UDP_REFUND_ENDPOINT EXTERNAL CHARACTER '';
+DECLARE udto NAMESPACE 'http://smart.com.ph/udto/';
+CREATE COMPUTE MODULE SetWSRRParameterForRouter
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		CALL CopyMessageHeaders();
+		CALL CopyEntireMessage();
+		DECLARE udtoRef REFERENCE TO InputRoot.XMLNSC.udto:UDTO;
+		DECLARE EnvRef REFERENCE TO Environment;
+		SET udtoRef.*:AtomicRequest.*:AtomicRequestQMgr = '';
+		SET udtoRef.*:AtomicRequest.*:AtomicRequestQName = '';
+		
+				--Dynamically sets the Lookup Node properties
+		DECLARE index INTEGER 2;
+		DECLARE operation CHARACTER getValueInEventKey(udtoRef, index, EnvRef);		
+		
+		IF operation = 'Inquiry' THEN
+			SET OutputLocalEnvironment.ServiceRegistryLookupProperties.Name = UDP_INQUIRY_ENDPOINT;
+		ELSEIF operation = 'Charge' THEN
+			SET OutputLocalEnvironment.ServiceRegistryLookupProperties.Name = UDP_CHARGE_ENDPOINT;
+		ELSEIF operation = 'Refund' THEN
+			SET OutputLocalEnvironment.ServiceRegistryLookupProperties.Name = UDP_REFUND_ENDPOINT;
+		END IF;
+		
+		SET OutputLocalEnvironment.ServiceRegistryLookupProperties.Namespace = 'http://smart.com.ph/udto';
+		SET OutputLocalEnvironment.ServiceRegistryLookupProperties.Version = '1.0';
+		
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;

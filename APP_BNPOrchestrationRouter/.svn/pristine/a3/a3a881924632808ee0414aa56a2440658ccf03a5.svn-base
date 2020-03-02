@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmDatabase.msgnode="ComIbmDatabase.msgnode" xmlns:ComIbmDecisionService.msgnode="ComIbmDecisionService.msgnode" xmlns:ComIbmMQInput.msgnode="ComIbmMQInput.msgnode" xmlns:ComIbmMQOutput.msgnode="ComIbmMQOutput.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="com/smart/bnp/OrchestrationRouter/BNPOrchestrationRouter.msgflow"
+    nsPrefix="com_smart_bnp_OrchestrationRouter_BNPOrchestrationRouter.msgflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <translation xmi:type="utility:TranslatableString" key="BNPOrchestrationRouter" bundleName="com/smart/bnp/OrchestrationRouter/BNPOrchestrationRouter" pluginId="APP_BNPOrchestrationRouter"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/APP_BNPOrchestrationRouter/icons/full/obj16/BNPOrchestrationRouter.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/APP_BNPOrchestrationRouter/icons/full/obj30/BNPOrchestrationRouter.gif"/>
+    <composition>
+      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="83,136" queueName="BPGW.ROUTER.UDTO.IN" messageDomainProperty="XMLNSC">
+        <translation xmi:type="utility:ConstantString" string="MQ Input"/>
+      </nodes>
+      <nodes xmi:type="ComIbmDecisionService.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="194,136" decisionService="BNPOrchestrationRouter_Decision_Service.rules" ruleSet="BNPOrchestrationRouter_Decision_Service" restrictedTo="DecisionServices">
+        <translation xmi:type="utility:ConstantString" string="Decision Service"/>
+        <parameterTable parameterName="UDTO" parameterType="UDTOType{http://smart.com.ph/udto/}" parameterDirection="INOUT" parameterVerbalization="UDTO" xpathExpression="$Root/XMLNSC/udt:UDTO"/>
+        <nsMappingTable nsPrefix="udt" namespace="http://smart.com.ph/udto/"/>
+      </nodes>
+      <nodes xmi:type="ComIbmDatabase.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="330,140" statement="esql://routine/com.smart.bnp.router.esql#SetOutputQueue.Main">
+        <translation xmi:type="utility:ConstantString" string="Set Queue Name"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="462,141" destinationMode="list">
+        <translation xmi:type="utility:ConstantString" string="MQ Output"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+    </composition>
+    <propertyOrganizer/>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -1,0 +1,15 @@
+BROKER SCHEMA com.smart.bnp.router.esql
+
+CREATE DATABASE MODULE SetOutputQueue
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		DECLARE localRef REFERENCE TO LocalEnvironment;
+		DECLARE rootRef REFERENCE TO Root;
+		
+		SET localRef.Destination.MQ.DestinationData.queueName = rootRef.XMLNSC.*:UDTO.*:MessageVariables.*:AtomicServiceQ;
+	
+		RETURN TRUE;
+	END;
+END MODULE;
+
