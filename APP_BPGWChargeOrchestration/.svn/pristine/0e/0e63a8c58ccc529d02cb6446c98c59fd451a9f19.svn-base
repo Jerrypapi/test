@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmMQInput.msgnode="ComIbmMQInput.msgnode" xmlns:com_smart_bpgw_common_orchestration_subflow_Filter_Output.subflow="com/smart/bpgw/common/orchestration/subflow/Filter_Output.subflow" xmlns:com_smart_bpgw_common_orchestration_subflow_OrchestrationErrorHandling.subflow="com/smart/bpgw/common/orchestration/subflow/OrchestrationErrorHandling.subflow" xmlns:com_smart_bpgw_common_orchestration_subflow_SetMQEndpoint.subflow="com/smart/bpgw/common/orchestration/subflow/SetMQEndpoint.subflow"
+    xmlns:com_smart_bpgw_common_orchestration_subflow_WSRR_LookUp.subflow="com/smart/bpgw/common/orchestration/subflow/WSRR_LookUp.subflow" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="com/smart/bpgw/charge/orchestration/messageflow/BPGWChargeOrchestration.msgflow"
+    nsPrefix="com_smart_bpgw_charge_orchestration_messageflow_BPGWChargeOrchestration.msgflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <translation xmi:type="utility:TranslatableString" key="BPGWChargeOrchestration" bundleName="com/smart/bpgw/charge/orchestration/messageflow/BPGWChargeOrchestration" pluginId="APP_BPGWChargeOrchestartion"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/APP_BPGWChargeOrchestartion/icons/full/obj16/BPGWChargeOrchestration.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/APP_BPGWChargeOrchestartion/icons/full/obj30/BPGWChargeOrchestration.gif"/>
+    <composition>
+      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="135,271" queueName="BPGW.CHARGE.ORCHESTRATION.UDTO.IN" messageDomainProperty="XMLNSC" parserXmlnscMixedContentRetainMode="all" orderMode="userDefined" orderModeLocation="$Root/XMLNSC/udt:UDTO/udt:OriginalRequest/udt:OriginalRequestMsgId">
+        <translation xmi:type="utility:ConstantString" string="MQ Input"/>
+        <parserXmlnscOpaqueElements elements="//udt:OriginalRequest"/>
+        <parserXmlnscOpaqueElements elements="//udt:OriginalResponse"/>
+        <parserXmlnscOpaqueElements elements="//udt:AtomicResponse"/>
+        <nsMappingTable nsPrefix="udt" namespace="http://smart.com.ph/udto/"/>
+      </nodes>
+      <nodes xmi:type="com_smart_bpgw_common_orchestration_subflow_WSRR_LookUp.subflow:FCMComposite_1" xmi:id="FCMComposite_1_2" location="447,274">
+        <translation xmi:type="utility:ConstantString" string="WSRR_LookUp"/>
+      </nodes>
+      <nodes xmi:type="com_smart_bpgw_common_orchestration_subflow_Filter_Output.subflow:FCMComposite_1" xmi:id="FCMComposite_1_5" location="572,270" UDP_LOG_TXN_QUEUE="BPGW.LOGTXN.CS.UDTO.IN" UDP_INPUT_QUEUE="BPGW.CHARGE.ORCHESTRATION.UDTO.IN" UDP_ERROR_LOGTXN_EVENT_KEY="BNP__Inquiry__SMS__1" UDP_ERROR_MESSAGE_MAPPING_EVENT_KEY="BNP__Inquiry__FACADE__1" UDP_MESSAGE_MAPPING_QUEUE="BPGW.MESSAGEMAPPINGCOMPOSITE.UDTO.IN">
+        <translation xmi:type="utility:ConstantString" string="Filter Output"/>
+      </nodes>
+      <nodes xmi:type="com_smart_bpgw_common_orchestration_subflow_SetMQEndpoint.subflow:FCMComposite_1" xmi:id="FCMComposite_1_6" location="305,274" UDP_ERROR_ENDPOINT="BNP__Payment__ERROR" UDP_SMS_ENDPOINT="BNP__Payment__SMS" UDP_RRN_END_POINT="BNP__Payment__RRN">
+        <translation xmi:type="utility:ConstantString" string="SetMQEndpoint"/>
+      </nodes>
+      <nodes xmi:type="com_smart_bpgw_common_orchestration_subflow_OrchestrationErrorHandling.subflow:FCMComposite_1" xmi:id="FCMComposite_1_3" location="176,199">
+        <translation xmi:type="utility:ConstantString" string="OrchestrationErrorHandling"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_7" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.Output1" targetTerminalName="InTerminal.Input">
+        <bendPoints>78,47,216,47</bendPoints>
+        <bendPoints>-222,46,-84,46</bendPoints>
+      </connections>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.catch" targetTerminalName="InTerminal.Input">
+        <bendPoints>-19,-82,-108,-10</bendPoints>
+      </connections>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_3" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.Input">
+        <bendPoints>104,-10,6,-85</bendPoints>
+      </connections>
+    </composition>
+    <propertyOrganizer/>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>

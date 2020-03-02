@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmMQInput.msgnode="ComIbmMQInput.msgnode" xmlns:com_smart_bpgw_common_orchestration_subflow_Filter_Output.subflow="com/smart/bpgw/common/orchestration/subflow/Filter_Output.subflow" xmlns:com_smart_bpgw_common_orchestration_subflow_WSRR_LookUp.subflow="com/smart/bpgw/common/orchestration/subflow/WSRR_LookUp.subflow" xmlns:com_smart_bpgw_common_subflow_BPGW_Error_Handling.subflow="com/smart/bpgw/common/subflow/BPGW_Error_Handling.subflow" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="com/smart/bpgw/charge/orchestration/messageflow/BPGWChargeOrchestration.msgflow"
+    nsPrefix="com_smart_bpgw_charge_orchestration_messageflow_BPGWChargeOrchestration.msgflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.UDP_INPUT_QUEUE" name="UDP_INPUT_QUEUE" defaultValueLiteral="BPGW.CHARGE.ORCHESTRATION.UDTO.IN">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.UDP_LOG_TXN_QUEUE" name="UDP_LOG_TXN_QUEUE">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <translation xmi:type="utility:TranslatableString" key="BPGWChargeOrchestration" bundleName="com/smart/bpgw/charge/orchestration/messageflow/BPGWChargeOrchestration" pluginId="APP_BPGWChargeOrchestartion"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/APP_BPGWChargeOrchestartion/icons/full/obj16/BPGWChargeOrchestration.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/APP_BPGWChargeOrchestartion/icons/full/obj30/BPGWChargeOrchestration.gif"/>
+    <composition>
+      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="163,200" queueName="BPGW.CHARGE.ORCHESTRATION.UDTO.IN" messageDomainProperty="XMLNSC">
+        <translation xmi:type="utility:ConstantString" string="MQ Input"/>
+      </nodes>
+      <nodes xmi:type="com_smart_bpgw_common_orchestration_subflow_WSRR_LookUp.subflow:FCMComposite_1" xmi:id="FCMComposite_1_2" location="273,200">
+        <translation xmi:type="utility:ConstantString" string="WSRR_LookUp"/>
+      </nodes>
+      <nodes xmi:type="com_smart_bpgw_common_subflow_BPGW_Error_Handling.subflow:FCMComposite_1" xmi:id="FCMComposite_1_4" location="252,283">
+        <translation xmi:type="utility:ConstantString" string="BPGW_Error_Handling"/>
+      </nodes>
+      <nodes xmi:type="com_smart_bpgw_common_orchestration_subflow_Filter_Output.subflow:FCMComposite_1" xmi:id="FCMComposite_1_5" location="381,200">
+        <translation xmi:type="utility:ConstantString" string="Filter Output"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.catch" targetTerminalName="InTerminal.Input2"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.Input2"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.Input"/>
+    </composition>
+    <propertyOrganizer>
+      <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.UDP_INPUT_QUEUE">
+        <propertyName xmi:type="utility:TranslatableString" key="Property.UDP_INPUT_QUEUE" bundleName="com/smart/bpgw/common/orchestration/subflow/Filter_Output" pluginId="LIB_Common_BNP"/>
+        <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.UDP_LOG_TXN_QUEUE">
+          <propertyName xmi:type="utility:TranslatableString" key="Property.UDP_LOG_TXN_QUEUE" bundleName="com/smart/bpgw/common/orchestration/subflow/Filter_Output" pluginId="LIB_Common_BNP"/>
+        </propertyDescriptor>
+      </propertyDescriptor>
+    </propertyOrganizer>
+    <attributeLinks promotedAttribute="Property.UDP_INPUT_QUEUE" overriddenNodes="FCMComposite_1_5">
+      <overriddenAttribute href="com/smart/bpgw/common/orchestration/subflow/Filter_Output.subflow#Property.UDP_INPUT_QUEUE"/>
+    </attributeLinks>
+    <attributeLinks promotedAttribute="Property.UDP_LOG_TXN_QUEUE" overriddenNodes="FCMComposite_1_5">
+      <overriddenAttribute href="com/smart/bpgw/common/orchestration/subflow/Filter_Output.subflow#Property.UDP_LOG_TXN_QUEUE"/>
+    </attributeLinks>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -1,0 +1,14 @@
+BROKER SCHEMA com.smart.bpgw.charge.orchestration.esql
+
+CREATE DATABASE MODULE SetOutputQueue
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+	
+		DECLARE localRef REFERENCE TO LocalEnvironment;
+		DECLARE rootRef REFERENCE TO Root;
+		
+		SET localRef.Destination.MQ.DestinationData.queueName = rootRef.XMLNSC.*:UDTO.*:MessageVariables.*:AtomicServiceQ;
+		SET rootRef.XMLNSC.*:UDTO.*:MessageVariables.*:AtomicServiceQ = '';
+		RETURN TRUE;
+	END;
+END MODULE;

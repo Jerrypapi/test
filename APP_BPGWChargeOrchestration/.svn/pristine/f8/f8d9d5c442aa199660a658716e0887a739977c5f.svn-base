@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:decisionService xmlns:ns2="com.ibm.wmb.rulesmodel">
+    <type>ODM_EMBEDDED</type>
+    <name>BPGWChargeOrchestration_Decision_Service</name>
+    <version>1.0</version>
+    <lastModified>Fri Aug 29 18:05:34 CST 2014</lastModified>
+    <description></description>
+    <RuleSets>
+        <RuleSet>
+            <name>BPGWChargeOrchestration_Decision_Service</name>
+            <package></package>
+            <Parameters>
+                <Parameter>
+                    <name>UDTO</name>
+                    <kind>INOUT</kind>
+                    <type xmlns:ns3="http://smart.com.ph/udto/">ns3:UDTOType</type>
+                    <locale>en</locale>
+                    <verbalization>UDTO</verbalization>
+                </Parameter>
+                <Parameter>
+                    <name>CurrentEventKey</name>
+                    <kind>INOUT</kind>
+                    <type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:string</type>
+                    <locale>en</locale>
+                    <verbalization>CurrentEventKey</verbalization>
+                </Parameter>
+            </Parameters>
+            <Rules>
+                <Rule>
+                    <name>Rule 1</name>
+                    <sequenceNumber>0</sequenceNumber>
+                    <locale>en</locale>
+                    <definition>if the event key of UDTO ends with &quot;BPGW.UNIFIED.FACADE.UDTO.IN&quot; and the OVParam2s of the other variables of the message variables of UDTO contain &quot;9005&quot; &#xD;
+&#xD;
+then set the atomic service Q of the message variables of UDTO to &quot;BPGW.LOGTXN.CS.UDTO.IN&quot;;&#xD;
+set the event key of UDTO to the event key of UDTO + &quot;:&quot; + CurrentEventKey;</definition>
+                </Rule>
+            </Rules>
+        </RuleSet>
+    </RuleSets>
+</ns2:decisionService>
