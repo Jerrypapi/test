@@ -1,0 +1,142 @@
+<out:UDTO xmlns:out="http://smart.com.ph/udto/" xmlns:io="http://smart.com.ph/One">
+	<out:OriginalRequest>
+		<out:OriginalRequestPayload>
+			<OneRequest>
+				<endUserId>tel:+09328886777</endUserId>
+				<referenceCode>00002-1234567891</referenceCode>
+				<transactionOperationStatus>Charged</transactionOperationStatus>
+				<description>AppStore - gubaga Go Scuba!</description>
+				<amount>1.00</amount>
+				<currency>PHP</currency>
+				<clientCorrelator />
+				<onBehalfOf>Ericsson</onBehalfOf>
+				<channel>WAP</channel>
+				<taxAmount>0</taxAmount>
+				<serviceID>TSTOB</serviceID>
+				<purchaseCategoryCode>games:educational</purchaseCategoryCode>
+				<replyId>414d5120514d4250475730312020202067718e5405640820</replyId>
+			</OneRequest>
+		</out:OriginalRequestPayload>
+		<out:OriginalRequestCorellId />
+		<out:OriginalRequestMsgId>414d5120514d4250475730312020202067718e54082a0820
+		</out:OriginalRequestMsgId>
+		<out:OriginalRequestAuthToken />
+		<out:TimeStamp>2015-01-05T14:47:19+08:00</out:TimeStamp>
+		<out:InputParam1>endUserId=tel:+09328886777;min=09328886777;referenceCode=00002-1234567891;merchantId=00002;transactionOperationStatus=Charged;description=AppStore
+			- gubaga Go
+			Scuba!;amount=1.00;currency=PHP;onBehalfOf=Ericsson;channel=WAP;taxAmount=0;serviceID=TSTOB;purchaseCategoryCode=games:educational;replyId=414d5120514d4250475730312020202067718e5405640820;
+		</out:InputParam1>
+		<out:InputParam2 />
+		<out:InputParam3 />
+		<out:InputParam4 />
+		<out:InputParam5 />
+	</out:OriginalRequest>
+	<out:OriginalResponse>
+		<out:OriginalResponsePayload />
+		<out:OriginalResponseReplyToQName />
+		<out:OriginalResponseReplyToQMgr />
+	</out:OriginalResponse>
+	<out:AtomicRequest>
+		<out:AtomicRequestPayload>
+			<ns0:ICMSRequest xmlns:ns0="http://smart.com.ph/ICMS">
+				<iMSISDN>09328886777</iMSISDN>
+			</ns0:ICMSRequest>
+		</out:AtomicRequestPayload>
+		<out:AtomicRequestQName>BPGW.SMSCOMPOSITE.UDTO.IN
+		</out:AtomicRequestQName>
+		<out:AtomicRequestQMgr>QMBGPW01</out:AtomicRequestQMgr>
+		<out:AtomicRequestReplyToQName>
+		</out:AtomicRequestReplyToQName>
+		<out:AtomicRequestReplyToQMgr>
+		</out:AtomicRequestReplyToQMgr>
+		<out:AtomicRequestJavaClassPath>
+		</out:AtomicRequestJavaClassPath>
+		<out:TimeStamp>
+		</out:TimeStamp>
+		<AtomicRequestQueueName>BPGW.LOGTXN.UDTO.IN</AtomicRequestQueueName>
+		<AtomicRequestQueueManagerName>QMBPGW01
+		</AtomicRequestQueueManagerName>
+	</out:AtomicRequest>
+	<out:AtomicResponse>
+		<out:AtomicResponsePayload />
+		<out:OutputParam1>rrn=000091100007</out:OutputParam1>
+		<out:OutputParam1>merchantName=Chikka;contactNo=+639183371986;email=lrtomelde@smart.com.ph;
+		</out:OutputParam1>
+		<out:OutputParam1>customerTypeValidationFlag=N;cycleValidationFlag=N;barringLevelValidationFlag=N;ageingAndCurrentAmtValidationflag=N;remainingBalanceValidationFlag=N;allowedCLPercentage=30
+		</out:OutputParam1>
+		<out:OutputParam1>InvalidCycleList=41,43,33,35,45,46,50,61,73,75,87,23,24,29,31,69,88,66,80,81,37,39
+		</out:OutputParam1>
+		<out:OutputParam2>BPGW.ICMS.UDTO.IN</out:OutputParam2>
+		<out:OutputParam3 />
+		<out:OutputParam4 />
+		<out:OutputParam5 />
+		<out:AtomicResponsePayload>
+			<ns2:RRNAdapterResponse xmlns:ns2="http://smart.com.ph/RRNGenerator">
+				<value>000091100007</value>
+				<ASStatus>SUCCESS</ASStatus>
+			</ns2:RRNAdapterResponse>
+		</out:AtomicResponsePayload>
+		<out:AtomicResponsePayload>
+			<NS1:getMerchantIdResponse xmlns:NS1="http://smart.com.ph/CacheDB">
+				<merchantId>00002</merchantId>
+				<merchantName>Chikka</merchantName>
+				<contactNo>+639183371986</contactNo>
+				<email>lrtomelde@smart.com.ph</email>
+				<ASStatus>SUCCESS</ASStatus>
+			</NS1:getMerchantIdResponse>
+		</out:AtomicResponsePayload>
+		<out:AtomicResponsePayload>
+			<NS1:getServiceIdResponse xmlns:NS1="http://smart.com.ph/CacheDB">
+				<serviceIds>
+					<value>TSTOB</value>
+					<value>TSTOB</value>
+					<value>TSTOB</value>
+					<value>TSTOB</value>
+					<value>TSTOB</value>
+					<value>TSTOB</value>
+					<value>TSTOB</value>
+					<value>TSTOB</value>
+					<value>TSTOB</value>
+					<value>G0000</value>
+				</serviceIds>
+				<ASStatus>SUCCESS</ASStatus>
+			</NS1:getServiceIdResponse>
+		</out:AtomicResponsePayload>
+		<out:AtomicResponsePayload>
+			<NS1:getTransactionOperationStatusResponse
+				xmlns:NS1="http://smart.com.ph/CacheDB">
+				<operation>
+					<value>Refund</value>
+					<value>Payment</value>
+					<value>Refund</value>
+					<value>Inquiry</value>
+					<value>Payment</value>
+					<value>Refund</value>
+				</operation>
+				<ASStatus>SUCCESS</ASStatus>
+			</NS1:getTransactionOperationStatusResponse>
+		</out:AtomicResponsePayload>
+	</out:AtomicResponse>
+	<out:MessageVariables>
+		<out:OriginalReplyToQ />
+		<out:OriginalReplyToQMgr />
+		<out:OriginalCorrelId />
+		<out:OriginalMsgId />
+		<out:AtomicServiceQ />
+		<out:AtomicServiceReplyTo />
+		<out:AtomicServiceQMgr />
+		<out:JavaClassPath />
+		<out:ScriptBody />
+		<out:OtherVariables>
+			<out:OVParam1>Inquiry</out:OVParam1>
+			<out:OVParam2>0012</out:OVParam2>
+			<out:OVParam3>BPGW.ONE.HTTPADAPTER.IN</out:OVParam3>
+			<OVParam3>BPGW.ONEAPI.FACADETOHTTP.UDTO.IN</OVParam3>
+			<OVParam3>BPGW.INQUIRE.ORCHESTRATION.UDTO.IN</OVParam3>
+			<out:OVParam4>OneAPI</out:OVParam4>
+			<out:OVParam5 />
+		</out:OtherVariables>
+		<out:RouteToLabel>REPLYTO</out:RouteToLabel>
+	</out:MessageVariables>
+	<out:EventKey>BNP__Inquiry__0000__2</out:EventKey>
+</out:UDTO>
